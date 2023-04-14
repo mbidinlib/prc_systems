@@ -1,2 +1,0 @@
-# About
-PRC Data Check System (PRCDC) is a Python based data engineering system for checking and processing data. The system leverages on GUI models in Python to make interacting and checking of data easy and quick without prior coding experience. The app currently comes with three main functionalities namely the API data download, data dictionary for ODK related surveys and general data checks. The figure below shows an overview of the system.
