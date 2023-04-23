@@ -6,11 +6,7 @@ import mimetypes
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required  # Decorator to restrict some sessions 
-from django.db.models import Q                              # Q is used to pass and/or statements which we will use to create the search filters
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm      # default user creation form in django. can be customized
 
 
 # Create your views here.
