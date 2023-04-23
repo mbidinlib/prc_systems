@@ -1,0 +1,297 @@
+{% load static %}
+<div class="body">
+  <div class="body__content">
+    <!-- <a href="#">Data Check</a>
+    <p>
+      <a href="{% url 'home' %}" class="body__images">
+        -- <img src="{% get_static_prefix %}images/{{ system.img }}" /> 
+        Under Development - Contact developer
+      </a>
+    </p> -->
+
+    <h1>1. Introduction</h1>
+    PRC Data Check System (PRCDC) is a Python based system for checking and
+    processing data. The system leverages GUI models in Python to make
+    interacting and checking of data easy and quick without prior coding
+    experience. The app comes with three main functionalities namely general
+    data checks, data dictionary for ODK related surveys and Advanced data
+    downloads. The figure below shows an overview of the system. It is suitable
+    for checking survey-related data
+    <img src="{% static 'images/prcdc_img1.png' %}" />
+
+    <h1>2. Advanced Data Download</h1>
+    The advanced data download functionality allows users conducting surveys
+    with ODK related platforms to download data at a faster pace with just a
+    click of a button. While the download currently supports only the SurveyCTO
+    based surveys, future versions would include downloading from other
+    survey-related platforms. For this to work, users need to allow API access
+    on their server
+
+    <h2>Downloading large data from SurveyCTO Server</h2>
+    SurveyCTO users can now download data large at a fast pace with this
+    functionality. The download duration ranges between 10 seconds to a maximum
+    of 20 minutes depending on the size of the data and volume of attachments.
+    Select SurveyCTO and enter the parameters as seen below
+    <img src="{% static 'images/prcdc_img2.png' %}" />
+
+    <table class="mytable">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+        <th>Required/Default</th>
+      </tr>
+      <tr>
+        <td>Enter server name</td>
+        <td>
+          This is where you enter the name of the SurveyCTO server. This field
+          accepts only one server per download
+        </td>
+        <td>Required - No default value</td>
+      </tr>
+      <tr>
+        <td>Login username</td>
+        <td>The username you are using to access the server</td>
+        <td>Required - No default value</td>
+      </tr>
+      <tr>
+        <td>Login Password</td>
+        <td>
+          The password to the username that you are using to access the server
+        </td>
+        <td>Required - No default value</td>
+      </tr>
+      <tr>
+        <td>Enter Form IDs</td>
+        <td>I comma-delimited list of IDs of the forms you wish to download</td>
+        <td>Required - No default value</td>
+      </tr>
+      <tr>
+        <td>Get Attachments</td>
+        <td>Check if you want to download attachments that come with data</td>
+        <td>Required- Default is Yes</td>
+      </tr>
+      <tr>
+        <td>Select Key</td>
+        <td>
+          This field helps you to select private key for forms that are
+          encrypted
+        </td>
+        <td>Not required- Default is No key</td>
+      </tr>
+      <tr>
+        <td>Data location</td>
+        <td>
+          Select the location of the downloaded data. A “media” subfolder would
+          be created in this location for attachments
+        </td>
+        <td>Required - No default value</td>
+      </tr>
+    </table>
+    <br />
+    The blue download button would initiate the download with the dataset
+    download first, followed by attachments where applicable. The downloaded
+    dataset would come in CSV format and names with the form id specified. It
+    currently allows only wide format downloads. When the download is triggered
+    and attachments enabled, a cancel button would be displayed below to enable
+    cancellation when the user wishes to
+
+    <h1>3. Generating Data Dictionaries</h1>
+    This functionality allows users who program their survey forms with XLS
+    forms to generate a python dictionary of choice lists for their dataset.
+    This dictionary may be used to import that data into Stata or SPSS forms
+    that have the actual choice values and labels. You can generate dictionaries
+    for up to 5 projects/surveys at a time. The following steps would help you
+    generate dictionaries.
+    <br /><br />
+
+    <div class="indent">
+      <ol class="d">
+        <li>
+          Select the XLS files and their corresponding datasets at the left side
+          of the home page as seen below
+          <img src="{% static 'images/prcdc_img3.png' %}" />
+          Datasets are required only when the user wants to produce a data
+          output. For only scripts, users may select only the XLS forms
+          <br /><br />
+        </li>
+        <li>
+          Select the parent folder where you would like to store the scripts.
+          The parent folder should be in PRCDC format. If you don't have such
+          folder structure, use the setup folder structure section to create the
+          folder structure
+          <img src="{% static 'images/prcdc_img4.png' %}" />
+        </li>
+        <li>
+          Click on generate dictionary button and the dictionaries would be
+          generated and stored in the <i><b>1_scripts</b></i> subfolder.
+        </li>
+      </ol>
+    </div>
+
+    <h1>4. Checking Data</h1>
+    The data check section allows users the opportunity to check for issues and
+    inconsistencies. The section comes with three different functionalities
+    namely setup, checks, session control.
+    <h2>Setup</h2>
+    The setup functionality is used to set the necessary checks that the user
+    may want to run on the datasets. This section allows up to 5 datasets per
+    session with a multiple session functionality powered by the session
+    control.
+
+    <h2>Preliminary Setups</h2>
+    This is where you import your datasets and choose necessary variables
+    including unique identifiers and variables to keep. You also get to choose
+    which datasets you wish to run checks on, and which checks you wish to run
+    at each time. There are seven (7) simple steps to complete the preliminary
+    setups.
+
+    <div class="indent">
+      <ol class="d">
+        <li>
+          Select the number of datasets: As shown in the flow diagram below, you
+          get to choose the number of datasets for the session/project. The
+          maximum allowed per section is 5. Based on the number selected, rows
+          would be created for selection of datasets. You do not need this if
+          you are checking only one dataset, since the default is 1.
+        </li>
+        <li>
+          Select a dataset for each row: For each of the rows created (based on
+          the number selected in a), you would click the button to select the
+          excel or CVS dataset. The actual name of the selected data would be
+          displayed in the textbox at the bottom to help the user identify the
+          dataset and verify if the right data is selected. You can always
+          replace the selected dataset by selecting a new one.
+        </li>
+        <li>
+          Select the unique identifier: When a valid dataset is selected, a
+          button for selecting the unique identifier (ID) appears. Click to
+          select the ID for each dataset.
+        </li>
+        <li>
+          Select the variables to keep in outputs: Use this button to select the
+          key variables you would like to see for each observation that is
+          flagged by the checks. Click to add a variable until you have your
+          desired key variables.
+        </li>
+        <li>
+          Activate each dataset for check: The check boxes in the section called
+          Select dataset to check would then be needed to activate each dataset
+          for checks at every time. This is an on-off button that can be changed
+          anytime based on the user's preferences.
+        </li>
+        <li>
+          Activate each individual check: When a dataset is activated for
+          checks, the check boxes for the individual checks at the right side
+          would be activated for use. Turn on all check that you would like to
+          setup and run. These are on-off buttons that can be changed based on
+          the user's preference.
+        </li>
+
+        <li>
+          Update entries for checks: Click the blue button at the button of the
+          check boxes labeled “Update” to update field for setting up the
+          checks. When the button is pressed, the spaces for the various checks
+          at the right side would be populated with fields to setup variables
+          and parameters for checks.
+        </li>
+      </ol>
+    </div>
+    The flow diagram below demonstrates the steps in completing the preliminary
+    setup.
+    <img src="{% static 'images/prcdc_img5.png' %}" />
+
+
+    <h2>Setup Check variables</h2>
+    After the preliminary setup, you will now define variables/parameters for the 
+    various checks for each dataset. This section has six (6) subsection that can 
+    be expanded by dragging the borders at the left or right as shown in the diagram below:
+    <img src="{% static 'images/prcdc_img6.png' %}" />
+
+    <h2>Checks</h2>
+    Having activated the variables/parameters fields, you now proceed to setup each 
+    check for all datasets that were activated. The various checks are explained in 
+    the sections following:
+    <h2> Check for Duplicates</h2>
+    This check is easy to setup and requires you to select only the unique identifier 
+    variable(s) you would like use to check for duplicates. The unique identifiers 
+    selected in previous sections would be prefilled here automatically. You don't 
+    need to do any extra work if you wish to check duplicates on these variables. 
+    Otherwise, select the combination of variables that uniquely identify the dataset. 
+    Multiple selection is allowed here for combination of variables that uniquely 
+    identify the dataset. You may also type or paste a comma separated list of variables.
+    For the example below, Dataset 1 has one variable that uniquely identifies the dataset 
+    (caseid_f) while Dataset 2 has a01 and so on…  
+    <img src="{% static 'images/prcdc_img7.png' %}"/>
+
+    <h2>Check for Missing Values</h2>
+    With this check, you will select all the variables that you wish to check for missing 
+    values for each dataset. You can also type or past a coma separated list of variables
+    for each dataset. The diagram below shows an example of missing checks setup for Datasets 1, 2 and 3
+    <img src="{% static 'images/prcdc_img8.png' %}"/>
+    
+    <h2>Check for outliers</h2>
+    For this check, you will select all the numeric variables you wish to check for 
+    outliers for each dataset. You can also type or past a coma separated list of 
+    numeric variables for each dataset. The diagram below shows an example of outlier 
+    checks setup for all datasets.
+    <img src="{% static 'images/prcdc_img9.png' %}"/>
+    
+    <h2>Other-Specify Exports</h2>
+    This check helps users conducting surveys to export variables where respondents 
+    specify other values. You will select a pair of categorical parent and child 
+    variables and click the button below to add them. The parent variable is the 
+    categorical survey question that has other-specify in the list and the child 
+    is the variable where the other is specified. You may also type a pair of parent 
+    and child variables separated by a pipe (|) parent1|child1, parent2|child2. 
+    Each pair is distinguished by a comma. The image below shows a sample setup.
+    <img src="{% static 'images/prcdc_img10.png' %}"/>
+    
+    <h2>Boundary/Constraint Checks</h2>
+    This check is used to flag values that are not within a certain range or boundary, 
+    by specifying the lower and upper boundary for each variable you want to check. 
+    You will select a numeric variable, enter the upper and lower boundaries and click 
+    the button below to add that variable to the list. For those who want to quickly 
+    type in, you may type the list as with each variable having the lower and upper 
+    separated by a pipe(|) as follows; var1|lower|upper, var2|lower|upper, 
+    var3|lower|upper. Note that each variable and boundary items is separated 
+    by a comma. The image below is a sample boundary check setup.
+    <img src="{% static 'images/prcdc_img11.png' %}"/>
+    
+    <h2>Session control</h2>
+    Seeing that all the checks could take a couple of minutes and one would not want 
+    to repeat the process everything you reopen the app, the developer adds this 
+    section to allow users save current settings to a location and reopen it whenever 
+    one wishes. This is also helpful for collaborative work where teams would like to 
+    all have access to the same settings and anyone could run the checks anytime. 
+    The saved file may be stored in the folder created by the system and shared with 
+    teams. Session control also helps setup multiple projects and navigate between 
+    projects.
+    
+    <h2>Session save</h2>
+    Select the first option from the session control, select the location where you would
+    like to save the session and the name of the session/project. Click the run button 
+    the save the session.
+    <img src="{% static 'images/prcdc_img12.png' %}"/>
+
+    <h2>Session Restore</h2>
+    To restore a previous session or project, select Restore session and select the location
+    of the saved session All previously saved sessions would be populated at the name 
+    session for selection. Select the appropriate project/session and click run. As seen below:
+    <img src="{% static 'images/prcdc_img13.png' %}"/>
+
+    The session restore would update the app with all the datasets, selected variables 
+    and settings that were done at the point of restoration. Users can easily switch 
+    between projects using the session restore function.
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
