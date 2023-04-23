@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'prc_systems.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'prc_systems',
+        'NAME': 'djangodb',
         'USER': 'postgres',
-        'PASSWORD': 'GloryToJesus@1',
-        'HOST': 'localhost',
+        'PASSWORD': 'GloryToJesus!1',
+        'HOST': 'prc-system.cy0uxgainckk.us-west-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
