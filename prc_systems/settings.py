@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'prc_systems',
         'USER': 'postgres',
         'PASSWORD': 'GloryToJesus@1',
-        'HOST': '33l8e09lql.execute-api.us-west-2.amazonaws.com/',
+        'HOST': '0.0.0.0',
         'PORT': '5432',
     }
 }
