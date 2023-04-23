@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'prc_systems',
         'USER': 'postgres',
         'PASSWORD': 'GloryToJesus@1',
-        'HOST': '0.0.0.0',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
