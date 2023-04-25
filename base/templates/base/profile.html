@@ -1,0 +1,46 @@
+{% extends 'main.html' %} {% block content %} {% load static %}
+
+<main class="profile-page layout layout--3">
+  <div class="container">
+    {% include 'base/systems_component.html' %}
+
+    <!-- Room List Start -->
+    <div class="roomList">
+      <div class="profile">
+        <div class="profile__avatar">
+          <div class="avatar avatar--large active">
+            <img src="{% static 'images/mine.jpg' %}" />
+          </div>
+        </div>
+        <div class="profile__info">
+          <h3>Mathew Bidinlib</h3>
+          <p>@mbidinlib</p>
+
+        </div>
+        <div class="profile__about">
+          <h3>About</h3>
+          <p>
+            Mathew Bidinlib is a Research and Data Specialist passionate in
+            developing systems in python, JavaScript, R and Stata to solve data
+            related problems. Contact <a href="matthewglory1@gmail.com">me </a>
+            for your needed data solutions.
+          </p>
+        </div>
+      </div>
+      <div class="roomList__header">
+        <h1>Data Solution Systems</h1>
+      </div>
+
+      {% include 'base/feed_component.html' %}
+    </div>
+
+    <!-- Room List End -->
+
+    <!-- Activities Start -->
+    {% include 'base/activity_component.html' %}
+
+    <!-- Activities End -->
+  </div>
+</main>
+
+{% endblock %}

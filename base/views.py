@@ -108,3 +108,9 @@ def all_systems(request):
 
     context = {'systems': systems}
     return render(request, 'base/systems.html', context)
+
+
+def my_profile(request):
+
+    context = {'systems': systems}
+    return render(request, 'base/profile.html', context)

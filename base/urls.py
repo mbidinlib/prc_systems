@@ -16,6 +16,7 @@ urlpatterns = [
     path('download/', views.download_file, name="download_file"),
     path('navigate/', views.navigate_to, name="navigate"),
     path('all_systems/', views.all_systems, name="systems"),
+    path('myprofile/', views.my_profile, name="myprofile"),
     
     # path("create-room/", views.createRoom, name='create-room'),  
     # path("update-room/<str:pk>/", views.updateRoom, name='update-room'),  
