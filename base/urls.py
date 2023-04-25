@@ -14,6 +14,8 @@ urlpatterns = [
     path('data_engineer/', views.data_engineer, name= "data_engineer"),
     path('data_engineer/', views.other_systems, name= "data_other"),
     path('download/', views.download_file, name="download_file"),
+    path('navigate/', views.navigate_to, name="navigate"),
+    path('all_systems/', views.all_systems, name="systems"),
     
     # path("create-room/", views.createRoom, name='create-room'),  
     # path("update-room/<str:pk>/", views.updateRoom, name='update-room'),  

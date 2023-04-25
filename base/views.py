@@ -77,7 +77,6 @@ def other_systems(request):
     return render(request, 'base/other_systems.html', context)
 
 
-
 # Define function to download file using template
 def download_file(request, filename=''):
     
@@ -96,3 +95,16 @@ def download_file(request, filename=''):
     else:
         # Load the template
         return render(request, 'base/home.html')
+
+
+# Navigate to
+def navigate_to(request):
+
+    context = {'systems': systems}
+    return render(request, 'base/activity.html', context)
+
+
+def all_systems(request):
+
+    context = {'systems': systems}
+    return render(request, 'base/systems.html', context)

@@ -251,22 +251,22 @@ a {
   fill: var(--color-light);
 }
 
-/* .mobile-menu {
+.mobile-menu {
   margin-bottom: 3rem;
-} */
+}
 
-/* .mobile-menuItems {
+.mobile-menuItems {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-} */
+  gap: 2rem;
+}
 
-/* @media screen and (min-width: 500px) {
+@media screen and (min-width: 500px) {
   .mobile-menu {
     display: none;
   }
-} */
+}
 
 /*==============================
 =>  Header Section
@@ -615,12 +615,12 @@ a {
   display: block;
 }
 
-/* @media screen and (max-width: 500px) {
+@media screen and (max-width: 200px) {
   .mobile-menu .header__search {
     display: block;
-    margin-bottom: 2.4rem;
+    margin-bottom: 2rem;
   }
-} */
+}
 
 /*==============================
 =>  Room List
