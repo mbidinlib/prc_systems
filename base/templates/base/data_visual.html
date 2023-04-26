@@ -1,49 +1,63 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% load static %}{% block content %}
 
-<main class="layout layout--3">
+<main>
   <div class="container">
-    {% include 'base/systems_component.html' %}
-    <!-- Topics Start -->
-    <!-- Topics End -->
+    <div class="grid-container_n">
+      <div class="item1">
+        <h1>PRC Data Visualization</h1>
+      </div>
+    </div>
 
-    <!-- Room List Start -->
-    <div class="roomList">
-      <div class="mobile-menu">
-        <form class="header__search">
-          <label>
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
+    <!-- Introduction to data visualization -->
+    <div class="grid-container_n">
+      <div class="item1">
+        <p>
+          PRC The data visualization systems provides users the opportunity to
+          visualize their data with all the rich python visualization libraries.
+          Select your dataset using the data picker below and choose the type of
+          visualization that you want, with the settings you desired
+        </p>
+      </div>
+    </div>
+
+    <!-- Main visualization -->
+    <div class="grid-container_n">
+
+      <div class="item1">
+        <div class="visualsettings">
+          <div class="visualsettings__header">
+            <h2>File Selection and Settings</h2>
+          </div>
+
+          <div class= "visualsettings__content">
+            <form
+              action="/action_page.php"
+              enctype="multipart/form-data"
+              method="POST"
             >
-              <title>search</title>
-              <path
-                d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
-              ></path>
-            </svg>
-            <input placeholder="Search for posts" />
-          </label>
-        </form>
-        <div class="mobile-menuItems">
-          <a class="btn btn--main btn--pill" href="{% url 'systems' %}">Systems</a>
-          <a class="btn btn--main btn--pill" href="{% url 'navigate' %}">Navigate To</a>
+              <label for="myfile">Select your data:</label>
+              <input type="file" id="datafile" name="datafile" />
+              <br /><br />
+              <input type="submit" />
+            </form>
+
+            <br />
+            <p>Variable settings</p>
+          </div>
+          
         </div>
       </div>
 
-      <div class="roomList__header">
-        <h1>       Data Visualisation </h1>
+      <!-- Column Two -->
+      <div class="item2">
+        <!-- Container to keep file selector -->
+        <div class="roomListRoom">
+          <div class="roomListRoom__header"></div>
+
+          <div class="roomListRoom__content">Data Overview</div>
+        </div>
       </div>
-
-      {% include 'base/data_visual_feed.html' %}
     </div>
-    <!-- Room List End -->
-
-    <!-- Activities Start -->
-    {% include 'base/activity_component.html' %}
-
-    <!-- Activities End -->
   </div>
 </main>
 {% endblock %}
