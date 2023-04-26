@@ -1,18 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-:root {
+
+
+
+
+/******Main Colors************/
+/* :root {
   --color-main: #71c6dd;
   --color-main-light: #e1f6fb;
-  --color-dark: #3f4156;    /* Color for NavBar and Sections */
+  --color-dark: #3f4156;    /* Color for NavBar and Sections 
   --color-dark-medium: #51546e;
-  --color-dark-light: #696d97;   /* Color for menu and Navigate*/
+  --color-dark-light: #696d97;   /* Color for menu and Navigate
   --color-light: #e5e5e5;
   --color-gray: #410a0a;
   --color-light-gray: #b2bdbd;
-  --color-bg: #2d2d39;        /* background color*/
+  --color-bg: #2d2d39;        /* background color*
   --color-success: #5dd693;
   --color-error: #fc4b0b;
+} */
+
+/******Alternative Colors******/
+
+:root {
+  --color-main: #006f95;
+  --color-main-light: #dbeff4;
+  --color-dark: #eae4e4;    /* Color for NavBar and Sections */
+  --color-dark-medium: #adadad; /*Ser bar*/
+  --color-dark-light: #d1dbd4;   /* Color for menu and Navigate*/
+  --color-light: #04650f; /*Header text colors*/
+  --color-gray: #410a0a;
+  --color-light-gray: #080808; /*Body Color*/
+  --color-bg: #f0f6f5;        /* background color*/
+  --color-success: #5dd693;
+  --color-error: #fc4b0b;
+  --color-menu:#080808;
 }
+
 
 /*========== base styles ==========*/
 
@@ -570,7 +593,7 @@ a {
 .topics__header h2 {
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--color-dark-light);
+  color: var(--color-menu);
 }
 
 .topics__list {
