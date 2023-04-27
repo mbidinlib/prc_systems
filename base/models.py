@@ -10,9 +10,10 @@ def user_dir_path(instance, filename):
     return 'uploads'
   
 class Datasets(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=200)
+    # file = models.FileField(null=True)
     file = models.FileField(upload_to=user_dir_path, null=True)
-    
+
     def __str__(self):
         return self.name
 
