@@ -30,19 +30,14 @@
           </div>
 
           <div class= "visualsettings__content">
-            <form
-              action="/action_page.php"
-              enctype="multipart/form-data"
-              method="POST"
-            >
-              <label for="myfile">Select your data:</label>
-              <input type="file" id="datafile" name="datafile" />
-              <br /><br />
-              <input type="submit" />
+            <form method="POST" action="" enctype="multipart/form-data">
+              {% csrf_token %} 
+              {{fileform.as_p}}
+              <input type="submit" value = Submit />
             </form>
 
             <br />
-            <p>Variable settings</p>
+            <p>Variable settings</p> 
           </div>
           
         </div>
@@ -58,6 +53,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </main>
 {% endblock %}

@@ -5,8 +5,12 @@ import os
 import mimetypes
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .models import Datasets
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+
+from .file_form import FileForm
+ 
 
 
 # Create your views here.
@@ -47,38 +51,50 @@ systems = [
 ]
 
 
-def home(request):
+def Home(request):
     
     context = {'systems': systems}
     return render(request, 'base/home.html', context)
 
 
-def data_check(request):
+def DataCheck(request):
 
     context = {'systems': systems}
     return render(request, 'base/data_check.html', context)
 
 
-def data_visual(request):
-
-    context = {'systems': systems}
+# Data visualization view
+def DataVisual(request):
+    fileform = FileForm()
+    
+    if request.method == 'POST':
+        print(request.POST)
+    
+    context = {'systems': systems, 'fileform': fileform}
     return render(request, 'base/data_visual.html', context)
 
 
-def data_engineer(request):
+def AddDataset(request):
+    datasets = Datasets.objects.all()
+    context = {'systems': systems, 'dataset': datasets}
+    return render(request, 'base/data_visual.html', context)
+
+
+
+def DataEngineer(request):
 
     context = {'systems': systems}
     return render(request, 'base/data_engineer.html', context)
 
 
-def other_systems(request):
+def OtherSystems(request):
 
     context = {'systems': systems}
     return render(request, 'base/other_systems.html', context)
 
 
 # Define function to download file using template
-def download_file(request, filename=''):
+def DownloadFile(request, filename=''):
     
     filename =  request.GET.get('filename')
     print(filename)
@@ -98,19 +114,16 @@ def download_file(request, filename=''):
 
 
 # Navigate to
-def navigate_to(request):
-
+def NavigateTo(request):
     context = {'systems': systems}
     return render(request, 'base/activity.html', context)
 
 
-def all_systems(request):
-
+def AllSystems(request):
     context = {'systems': systems}
     return render(request, 'base/systems.html', context)
 
 
-def my_profile(request):
-
+def MyProfile(request):
     context = {'systems': systems}
     return render(request, 'base/profile.html', context)
