@@ -14,8 +14,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='GloryToJesus@1')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
+# DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ["127.0.0.1","prc-systems-dev.us-west-2.elasticbeanstalk.com"]
 
@@ -137,7 +137,7 @@ MEDIA_DIR =  [
     BASE_DIR /'media'
     ]
 #Media
-MEDIA_ROOT = MEDIA_DIR
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 FILES_DIR =  [

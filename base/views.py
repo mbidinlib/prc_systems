@@ -67,16 +67,12 @@ def DataCheck(request):
 def DataVisual(request):
     fileform = FileForm()
     if request.method == 'POST':
-        fileform = FileForm(request.POST or None, request.FILES or None)
+        fileform = FileForm(request.POST, request.FILES)
         if fileform.is_valid():
-            file = fileform.cleaned_data['file']
-            obj = fileform.save(commit=False)
-            obj.file = file
-            # obj.save()
-            print("Vlid")
-            f = obj.file.open('r')
-            print(f.read())
-
+            fileform.save()
+            uploads = Datasets(name=request.POST['name'],file = request.FILES['file'])
+            uploads.file =uploads.file.url 
+            print(uploads.file, uploads.name)
     
     context = {'systems': systems, 'fileform': fileform}
     return render(request, 'base/data_visual.html', context)
