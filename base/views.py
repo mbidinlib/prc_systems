@@ -2,6 +2,7 @@
 This Python file defines all the views for the chatroom app
 '''
 import os
+import json
 import pandas as pd
 import xlrd, openpyxl
 import mimetypes
@@ -152,15 +153,18 @@ def DataVisual(request):
         # Read file with XLS/XLSX formats
         elif file_ext == 'xlsx' or file_ext == 'xls':
             df = pd.read_excel(file,engine='openpyxl')
-            data = df.to_json(orient='records')
+            data = df.to_json()
 
         #Create object for the dataset and ignore the file file before saving
         f_form = Datasets.objects.create(name=request.POST['name'], file=None, data=data)
         f_form.save() 
                  
-        context = {'systems': systems, 'fileform': fileform, "data": data, "filename": name}
+        #Finalize items in the context dictionary
+        keys = data
+        
+        context = {"keys": keys, 'systems': systems, 'fileform': fileform, "data": data, "filename": name}
         
     else:
         context = {'systems': systems, 'fileform': fileform}        
-    
+
     return render(request, 'base/data_visual.html', context)
