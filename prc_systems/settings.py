@@ -140,6 +140,8 @@ MEDIA_DIR =  [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+UPLOAD_FOLDER = os.path.join(MEDIA_ROOT, "uploads")
+
 FILES_DIR =  [
     BASE_DIR /'files'
     ]

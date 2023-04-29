@@ -2,12 +2,15 @@
 This Python file defines all the views for the chatroom app
 '''
 import os
+import pandas as pd
+import xlrd, openpyxl
 import mimetypes
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Datasets
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.conf import settings
 
 from .file_form import FileForm
  
@@ -63,20 +66,6 @@ def DataCheck(request):
     return render(request, 'base/data_check.html', context)
 
 
-# Data visualization view
-def DataVisual(request):
-    fileform = FileForm()
-    if request.method == 'POST':
-        fileform = FileForm(request.POST, request.FILES)
-        if fileform.is_valid():
-            fileform.save()
-            uploads = Datasets(name=request.POST['name'],file = request.FILES['file'])
-            uploads.file =uploads.file.url 
-            print(uploads.file, uploads.name)
-    
-    context = {'systems': systems, 'fileform': fileform}
-    return render(request, 'base/data_visual.html', context)
-
 
 def AddDataset(request):
     datasets = Datasets.objects.all()
@@ -131,3 +120,47 @@ def AllSystems(request):
 def MyProfile(request):
     context = {'systems': systems}
     return render(request, 'base/profile.html', context)
+
+
+
+# Data visualization view
+########################
+def DataVisual(request):
+    fileform = FileForm()
+    
+    if request.method == 'POST':
+        fileform = FileForm(request.POST, request.FILES)
+        if fileform.is_valid():
+            formdata=fileform.cleaned_data 
+            #fileform.save(commit=False)
+
+            file =formdata["file"]
+            name = formdata["name"]
+            filename = str(file)
+                        
+        #Process data
+        file_ext = str(filename).split(".")[-1].lower()
+        if name is None:
+            name = str(filename).split(".")[0]
+        # filepath = (settings.UPLOAD_FOLDER + "/" + file).replace("//", "/").replace("\\", "/")
+        
+        # Read CSVs
+        if file_ext == 'csv':
+            df = pd.read_csv(file)
+            data = df.to_json(orient='records')
+        
+        # Read file with XLS/XLSX formats
+        elif file_ext == 'xlsx' or file_ext == 'xls':
+            df = pd.read_excel(file,engine='openpyxl')
+            data = df.to_json(orient='records')
+
+        #Create object for the dataset and ignore the file file before saving
+        f_form = Datasets.objects.create(name=request.POST['name'], file=None, data=data)
+        f_form.save() 
+                 
+        context = {'systems': systems, 'fileform': fileform, "data": data, "filename": name}
+        
+    else:
+        context = {'systems': systems, 'fileform': fileform}        
+    
+    return render(request, 'base/data_visual.html', context)
