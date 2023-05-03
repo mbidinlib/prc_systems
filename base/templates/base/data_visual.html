@@ -51,12 +51,17 @@
 
           <div class="roomListRoom__content">Data Overview
             <table class="mytable">
-              <tr>
-                  {{keys}}
-                <tr>
-              </tr>
+
+
+
             </table>
         
+            {% for key, values in data.items %}
+            <tr>
+                <td>{{values}}</td>
+            </tr>
+            {% endfor %}
+
           </div>
         </div>
       </div>
