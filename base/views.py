@@ -4,7 +4,7 @@ This Python file defines all the views for the chatroom app
 import os
 import json
 import pandas as pd
-import xlrd, openpyxl
+import openpyxl
 import mimetypes
 from django.shortcuts import render, redirect
 from django.contrib import messages
