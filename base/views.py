@@ -148,7 +148,7 @@ def DataVisual(request):
         # Read CSVs
         if file_ext == 'csv':
             df = pd.read_csv(file)
-            data = df.to_dict()
+            data = df.to_json()
         
         # Read file with XLS/XLSX formats
         elif file_ext == 'xlsx' or file_ext == 'xls':
@@ -160,11 +160,11 @@ def DataVisual(request):
         f_form.save() 
                  
         #Finalize items in the context dictionary
-        keys = data
+        html_data = df.to_html(index=False)
         
-        print(len(data))
+        print(data)
         
-        context = {"keys": keys, 'systems': systems, 'fileform': fileform, "data": data, "filename": name}
+        context = {'systems': systems, 'fileform': fileform, "data": html_data, "filename": name}
         
     else:
         context = {'systems': systems, 'fileform': fileform}        

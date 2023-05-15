@@ -47,21 +47,15 @@
       <div class="item2">
         <!-- Container to keep file selector -->
         <div class="roomListRoom">
-          <div class="roomListRoom__header"></div>
+          <div class="roomListRoom__header">
+            Data Overview
+          </div>
 
-          <div class="roomListRoom__content">Data Overview
-            <table class="mytable">
-
-
-
-            </table>
-        
-            {% for key, values in data.items %}
-            <tr>
-                <td>{{values}}</td>
-            </tr>
-            {% endfor %}
-
+          <div class="roomListRoom__content">
+           
+            <div style="width: 500px; height: 350px; overflow-x: scroll;">
+            <table class="mytable">{{data|safe}}</table>
+          </div>
           </div>
         </div>
       </div>
